@@ -1,4 +1,4 @@
-FROM container-registry.oracle.com/os/oraclelinux:8-slim
+FROM container-registry.oracle.com/os/oraclelinux:9-slim
 
 ARG ARCH
 ARG binary=./bin/${ARCH}/nfsplugin
