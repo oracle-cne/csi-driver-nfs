@@ -6,10 +6,11 @@ String imageTag = "v" + version
 String container_registry_namespace = "olcne"
 String registry = "container-registry.oracle.com/" + container_registry_namespace
 
-olcnePipeline(
+imagePipeline(
         branchPattern: new BranchPattern(master: '(master|release/.*)', feature: '(?!^master$)(?!^release/.*$)(^.*$)'),
         containers: [(registry + '/nfsplugin:' + imageTag) : container_registry_namespace + '/nfsplugin:' + imageTag],
         golang: '1.23.7',
         architectures: ['x86_64', 'aarch64'],
-        platforms: ['ol9']
+        platforms: ['ol9'],
+        buildScript: "sh olm/build-image.sh"
 )
