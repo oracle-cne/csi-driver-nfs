@@ -1,0 +1,12 @@
+diff --git go.mod go.mod
+index 9a36315d..5afd50b8 100644
+--- go.mod
++++ go.mod
+@@ -1,6 +1,6 @@
+ module github.com/kubernetes-csi/csi-driver-nfs
+ 
+-go 1.23.1
++go 1.23.7
+ 
+ require (
+ 	github.com/container-storage-interface/spec v1.11.0
