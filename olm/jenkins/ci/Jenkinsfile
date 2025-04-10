@@ -11,5 +11,5 @@ olcnePipeline(
         containers: [(registry + '/nfsplugin:' + imageTag) : container_registry_namespace + '/nfsplugin:' + imageTag],
         golang: '1.23.7',
         architectures: ['x86_64', 'aarch64'],
-        platforms: ['ol9']
+        platforms: ['ol8']
 )
