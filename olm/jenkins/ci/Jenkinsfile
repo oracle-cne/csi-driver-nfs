@@ -1,0 +1,15 @@
+@Library('olcne-pipeline')
+import com.oracle.olcne.pipeline.BranchPattern
+
+String version = "4.11.0"
+String imageTag = "v" + version
+String container_registry_namespace = "olcne"
+String registry = "container-registry.oracle.com/" + container_registry_namespace
+
+olcnePipeline(
+        branchPattern: new BranchPattern(master: '(master|release/.*)', feature: '(?!^master$)(?!^release/.*$)(^.*$)'),
+        containers: [(registry + '/nfsplugin:' + imageTag) : container_registry_namespace + '/nfsplugin:' + imageTag],
+        golang: '1.23.7',
+        architectures: ['x86_64', 'aarch64'],
+        platforms: ['ol9']
+)
