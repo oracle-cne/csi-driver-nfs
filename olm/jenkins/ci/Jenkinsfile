@@ -7,7 +7,7 @@ String container_registry_namespace = "olcne"
 String registry = "container-registry.oracle.com/" + container_registry_namespace
 
 imagePipeline(
-        branchPattern: new BranchPattern(master: '(master|release/.*)', feature: '(?!^master$)(?!^release/.*$)(^.*$)'),
+        branchPattern: new BranchPattern(master: 'oracle/release/.*', feature: '(?!^release/.*$)(^.*$)'),
         containers: [(registry + '/nfsplugin:' + imageTag) : container_registry_namespace + '/nfsplugin:' + imageTag],
         architectures: ['x86_64', 'aarch64'],
         platforms: ['ol9'],
