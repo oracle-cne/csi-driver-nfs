@@ -10,7 +10,8 @@ COPY . /workspace/go/src/github.com/csi-driver-nfs
 ENV GOPATH=/workspace/go CGO_ENABLED=0
 WORKDIR /workspace/go/src/github.com/csi-driver-nfs
 
-RUN patch  --no-backup-if-mismatch -p0 --fuzz=0 < olm/Makefile.patch && \
+RUN git config --global --add safe.directory $(pwd) && \
+    patch  --no-backup-if-mismatch -p0 --fuzz=0 < olm/Makefile.patch && \
     make nfs
 
 FROM container-registry.oracle.com/os/oraclelinux:9-slim
