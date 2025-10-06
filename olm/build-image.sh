@@ -5,7 +5,7 @@ set -x
 CONTAINER_CLI="${CONTAINER_CLI:-podman}"
 
 name="nfsplugin"
-version="4.11.0"
+version="4.11.0-1"
 registry="container-registry.oracle.com/olcne"
 docker_tag=${registry}/${name}:v${version}
 
