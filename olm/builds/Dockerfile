@@ -1,7 +1,7 @@
 FROM container-registry.oracle.com/os/oraclelinux:9 AS builder
 
 RUN dnf config-manager --enable ol9_codeready_builder && \
-    dnf -y install git make golang && \
+    dnf -y install git make golang patch && \
     go version
 
 # Copy the contents of the repository
@@ -10,7 +10,8 @@ COPY . /workspace/go/src/github.com/csi-driver-nfs
 ENV GOPATH=/workspace/go CGO_ENABLED=0
 WORKDIR /workspace/go/src/github.com/csi-driver-nfs
 
-RUN make nfs
+RUN patch --no-backup-if-mismatch -p0 --fuzz=0 < olm/builds/Makefile.patch && \
+    make nfs
 
 FROM container-registry.oracle.com/os/oraclelinux:9-slim
 
