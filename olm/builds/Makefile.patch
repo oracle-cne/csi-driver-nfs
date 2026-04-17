@@ -5,7 +5,7 @@ index cd4f6bbf..1cd6c2a7 100644
 @@ -28,7 +28,7 @@ include release-tools/build.make
  GIT_COMMIT = $(shell git rev-parse HEAD)
  BUILD_DATE = $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
- IMAGE_VERSION ?= "4.13.2"
+ IMAGE_VERSION ?= v4.13.2
 -LDFLAGS = -X ${PKG}/pkg/nfs.driverVersion=${IMAGE_VERSION} -X ${PKG}/pkg/nfs.gitCommit=${GIT_COMMIT} -X ${PKG}/pkg/nfs.buildDate=${BUILD_DATE}
 +LDFLAGS = -X main.version=${IMAGE_VERSION} -X ${PKG}/pkg/nfs.driverVersion=${IMAGE_VERSION} -X ${PKG}/pkg/nfs.gitCommit=${GIT_COMMIT} -X ${PKG}/pkg/nfs.buildDate=${BUILD_DATE}
  EXT_LDFLAGS = -s -w -extldflags "-static"
