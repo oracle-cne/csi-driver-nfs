@@ -21,7 +21,7 @@ COPY --from=builder /workspace/go/src/github.com/csi-driver-nfs/LICENSE \
      /workspace/go/src/github.com/csi-driver-nfs/THIRD_PARTY_LICENSES.txt /usr/share/licenses/
 
 RUN microdnf update -y && \
-    microdnf install -y ca-certificates nfs-utils libcap-devel mount && \
+    microdnf install -y ca-certificates nfs-utils libcap-devel util-linux-core && \
     microdnf clean all && \
     rm -rf /var/cache/yum/* && \
     test -d /LICENSES || ln -s /usr/share/licenses /LICENSES
